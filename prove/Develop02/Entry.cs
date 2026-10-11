@@ -1,15 +1,29 @@
 
 class Entry
 {
-    string _prompt;
-    string _response;
-    int _date;
+    public string _entryPrompt;
+    public string _response;
+    public string _date;
 
-    void Display()
+    public void Display()
     {
-        Console.WriteLine($"Prompt: {_prompt}");
+        Console.WriteLine($"Prompt: {_entryPrompt}");
         Console.WriteLine($"Response: {_response}");
-        Console.WriteLine($"Date: {_date}");
+        Console.WriteLine($"Date: {_date}\n");
     }
 
+    string GetPrompt()
+    {
+        PromptGenerator prompt = new PromptGenerator();
+        return prompt._prompt;
+    }
+
+    public void writeEntry()
+    {
+        _entryPrompt = GetPrompt();
+        Console.WriteLine(_entryPrompt);
+        _response = Console.ReadLine();
+        DateTime theCurrentTime = DateTime.Now;
+        string _date = theCurrentTime.ToShortDateString();
+    }
 }
